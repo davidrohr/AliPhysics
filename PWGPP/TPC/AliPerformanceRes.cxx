@@ -101,10 +101,12 @@ AliPerformanceRes::~AliPerformanceRes()
 {
   // destructor
    
-  if(fResolHisto) delete fResolHisto; fResolHisto=0;     
-  if(fPullHisto)  delete fPullHisto;  fPullHisto=0;     
-  
-  if(fAnalysisFolder) delete fAnalysisFolder; fAnalysisFolder=0;
+  if(fResolHisto) delete fResolHisto;
+  fResolHisto=0;     
+  if(fPullHisto) delete fPullHisto;
+  fPullHisto=0;     
+  if(fAnalysisFolder) delete fAnalysisFolder;
+  fAnalysisFolder=0;
 }
 
 //_____________________________________________________________________________
@@ -1089,13 +1091,11 @@ void AliPerformanceRes::Analyse() {
       else fResolHisto->GetAxis(8)->SetRangeUser(-1.5,1.49);
       if (j!=9) fResolHisto->GetAxis(9)->SetRangeUser(0.1,19.99);            // pt threshold
       else fResolHisto->GetAxis(9)->SetRangeUser(0.015,19.99);
-      if(GetAnalysisMode() == 3) fResolHisto->GetAxis(5)->SetRangeUser(-80.,79.99); // y range
 
       if(j!=8) fPullHisto->GetAxis(8)->SetRangeUser(-0.9,0.89); // eta window
       else  fPullHisto->GetAxis(8)->SetRangeUser(-1.5,1.49);      // eta window
       if (j!=9) fPullHisto->GetAxis(9)->SetRangeUser(0.1,19.99);            // pt threshold
       else fPullHisto->GetAxis(9)->SetRangeUser(0.015,19.99);
-      if(GetAnalysisMode() == 3) fPullHisto->GetAxis(5)->SetRangeUser(-80.,79.99); // y range
       
       //Resolutions
 
